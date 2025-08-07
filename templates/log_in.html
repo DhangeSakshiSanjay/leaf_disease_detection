@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<style>
+    /* Custom CSS styles for the login form */
+    .page-section {
+        padding: 50px 0;
+        background-image: url('static/assets/b.jpg'); /* Replace 'bg_image.jpg' with the path to your background image */
+        background-size: cover;
+        background-position: center;
+    }
+
+    .registration-card {
+        background-color: rgba(144, 195, 244, 0.9); /* Adjust the opacity by changing the last value */
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .registration-heading {
+        margin-bottom: 20px;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .divider-custom {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .divider-custom .divider-custom-line {
+        width: 50px;
+        height: 3px;
+        background-color: #13adf4;
+        margin: 0 auto 20px auto;
+    }
+
+    .divider-custom .divider-custom-icon {
+        font-size: 24px;
+        color: #13adf4;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        border-radius: 20px;
+    }
+
+    .btn-primary {
+        background-color: #13adf4;
+        border-color: #13adf4;
+        border-radius: 20px;
+        padding: 10px 30px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn-primary:hover {
+        background-color: #89d7fb;
+        border-color: #89d7fb;
+    }
+</style>
+
+<section class="page-section" id="login" style="margin-top: 100px;">
+    <div class="container">
+        <!-- Login Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white" style="margin-top: 50px;">Login</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Login Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-5 registration-card">
+                <form id="loginForm" data-sb-form-api-token="API_TOKEN" method="POST">
+                    {% csrf_token %}
+                    <!-- Email address input-->
+                    <div class="form-group">
+                        <label for="username">Email</label>
+                        <input class="form-control" id="username" name="username" type="email" placeholder="Enter your email address..." data-sb-validations="required,email" />
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password..." data-sb-validations="required" />
+                    </div>
+                    <!-- Submit Button-->
+                    <button class="btn btn-primary btn-block"  type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
